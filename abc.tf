@@ -28,7 +28,7 @@ module "metric_alarm" {
   source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarm"
   version = "~> 2.0"
 
-  alarm_name          = "${var.alarm_name}-${var.FunctionName}
+  alarm_name          = "${var.alarm_name}-${var.FunctionName}"
   alarm_description   = var.alarm_description
   comparison_operator = var.comparison_operator
   datapoints_to_alarm = var.datapoints_to_alarm
