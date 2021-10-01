@@ -73,9 +73,11 @@ variable "statistic"{
     type = string
 }
 
-variable "FunctionName"{
+variable "FunctionNames"{
     description = "Lambda Function Name"
-    type = string
+    type = list(string)
 }
+
+
 
 
