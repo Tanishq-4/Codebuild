@@ -2,7 +2,6 @@ sns_topic_name = "new-topic"
 sns_subsciption_protocol = "email"
 sns_subsciption_endpoint_1 = "tankadlag@gmail.com"
 sns_subsciption_endpoint_2 = "tanishq.k@axiomio.com"
-alarm_name = "error-alarm"
 alarm_description = "Triggered when error in lambda"
 comparison_operator = "GreaterThanThreshold"
 datapoints_to_alarm = 1
