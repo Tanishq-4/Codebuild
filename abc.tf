@@ -25,10 +25,13 @@ resource "aws_sns_topic_subscription" "endpoint2" {
 }
 
 module "metric_alarm" {
+
   source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarm"
   version = "~> 2.0"
+  
+  for_each = toset(var.FunctionNames)
 
-  alarm_name          = "${var.alarm_name}-${var.FunctionName}"
+  alarm_name          = "${var.alarm_name}-${each.key}"
   alarm_description   = var.alarm_description
   comparison_operator = var.comparison_operator
   datapoints_to_alarm = var.datapoints_to_alarm
@@ -42,7 +45,7 @@ module "metric_alarm" {
   metric_name = var.metric_name
   statistic   = var.statistic
   dimensions = {
-    FunctionName = var.FunctionName
+    FunctionName = each.key
   }
 
   alarm_actions = [module.sns_topic.sns_topic_arn]
